@@ -1,21 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { ButtonBase, Container } from '@material-ui/core';
-import BgVideoSection from '../Components/BgVideoSection';
+import { Container } from '@material-ui/core';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import ModalBox from '../Components/ModalBox';
 
 const styles = theme => ({
     appBar: {
@@ -68,66 +62,91 @@ const styles = theme => ({
     },
 });
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
 function Home(props) {
     const { classes } = props;
-
+    const [openAddFormModal, setOpenAddFormModal] = useState(false);
     return (
         <React.Fragment>
+            <ModalBox open={openAddFormModal} setOpen={setOpenAddFormModal} type="land-add" />
             <CssBaseline />
             <AppBar position="static" className={classes.appBar}>
                 <Container>
                     <Toolbar class="topNav">
-                        <img src="/img/cover.png" className='main-logo'></img>
-                        {/* <ButtonBase className='connectWalletBtn'>
-                            <img src="/img/rainbow.svg"/>
-                            Connect Wallet
-                        </ButtonBase> */}
-                        {/* <ConnectButton className='connectWalletBtn'/> */}
-                        <ConnectButton chainStatus="icon" accountStatus="avatar"/>
+                        <img src="/img/cover.png" className='main-logo' alt="logo" />
+                        <ConnectButton chainStatus="icon" accountStatus="avatar" />
                     </Toolbar>
                 </Container>
             </AppBar>
             <main className='bgVideoDiv'>
                 {/* Hero unit */}
-                {/* <BgVideoSection /> */}
                 <div className={`${classes.heroUnit} heroSectionBg`}>
                     <div className={`${classes.heroContent} ftTxtDiv`}>
                         <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
                             BlockEstate
                         </Typography>
                         <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                        Our Decentralized Land Registry System is a revolutionary platform that allows users to register and list their land in a secure and decentralized manner. With our Dapp, you can enjoy hassle-free land ownership and transfer that is completely transparent, secure, and efficient. We believe that this is the future of land ownership, and we are proud to be at the forefront of this technological revolution.
+                            Our Decentralized Land Registry System is a revolutionary platform that allows users to register and list their land in a secure and decentralized manner. With our Dapp, you can enjoy hassle-free land ownership and transfer that is completely transparent, secure, and efficient. We believe that this is the future of land ownership, and we are proud to be at the forefront of this technological revolution.
                         </Typography>
                         <div className={classes.heroButtons}>
                             <Grid container spacing={16} justify="center">
                                 <Grid item>
-                                    <Button variant="contained" color="primary">
-                                        Register To BUY/SELL
-                                    </Button>
+                                    <ConnectButton.Custom>
+                                        {({
+                                            account,
+                                            chain,
+                                            openAccountModal,
+                                            openChainModal,
+                                            openConnectModal,
+                                            authenticationStatus,
+                                            mounted,
+                                        }) => {
+                                            // Note: If your app doesn't use authentication, you
+                                            // can remove all 'authenticationStatus' checks
+                                            const ready = mounted;
+                                            const connected =
+                                                ready &&
+                                                account &&
+                                                chain;
+                                            return (
+                                                <div
+                                                    {...(!ready && {
+                                                        'aria-hidden': true,
+                                                    })}
+                                                >
+                                                    {(() => {
+                                                        if (!connected) {
+                                                            return (
+                                                                <Button onClick={openConnectModal} variant="contained" color="primary">
+                                                                    Register To BUY/SELL
+                                                                </Button>
+                                                            );
+                                                        }
+                                                        if (chain.unsupported) {
+                                                            return (
+                                                                <Button onClick={openChainModal} variant="contained" color="primary">
+                                                                    Wrong network
+                                                                </Button>
+                                                            );
+                                                        }
+                                                        return (
+                                                            <Button variant="contained" color="primary" onClick={() => { setOpenAddFormModal(true) }}>
+                                                                BUY/SELL Land
+                                                            </Button>
+                                                        );
+                                                    })()}
+                                                </div>
+                                            );
+                                        }}
+                                    </ConnectButton.Custom>
                                 </Grid>
-                                {/* <Grid item>
-                                    <Button variant="outlined" color="primary">
-                                        Secondary action
-                                    </Button>
-                                </Grid> */}
                             </Grid>
                         </div>
                     </div>
                 </div>
-               
+
             </main>
             {/* Footer */}
             <footer className={classes.footer}>
-                {/* <Typography variant="h6" align="center" gutterBottom>
-                    Footer
-                </Typography> */}
-                {/* <small>Made in India with ❤️</small>
-                <Typography  align="center" color="textSecondary">
-                © Copyright 2023 Department of Information Technology & Communication.
-All Rights Reserved
-                </Typography> */}
                 <div className='footerNotes'>
                     <small>Made in <b>INDIA</b> with ❤️</small>
                     <small>© Copyright 2023 Department of Information Technology & Communication. All Rights Reserved</small>

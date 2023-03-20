@@ -1,9 +1,8 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
 import './index.css';
-
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
@@ -11,14 +10,17 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
 // import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
-import { goerli, mainnet } from 'wagmi/chains';
+import { goerli, polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { useAccount } from 'wagmi'
+import connectEther from './Contract/ether';
+import ModalBox from "./Components/ModalBox";
+// import { contract } from './Contract/ether';
 
 const { chains, provider } = configureChains(
   // [mainnet, polygon, optimism, arbitrum, goerli],
-  [goerli, mainnet],
+  [polygonMumbai, goerli],
   [
     alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider()
@@ -37,14 +39,23 @@ const wagmiClient = createClient({
 })
 
 function App() {
-  const { address, isConnected } = useAccount();
-
+  const { address, isConnected, isDisconnected, isConnecting  } = useAccount();
+  const [openModal, setOpenModal] = useState(false);
   useEffect(()=>{
-    if(isConnected){
-      alert(address);
+    let contract;
+    const callMethod = async() => {
+      contract = await connectEther();
+      const data = await contract.isUserRegistered(address);
+      if(data===false){ 
+        setOpenModal(true); 
+        console.log(data);
+      }
     }
-  },[isConnected])
-  
+    if(isConnected){
+      callMethod();
+    }
+  },[isConnected, address, isDisconnected, isConnecting])
+
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
@@ -53,6 +64,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
+          {/* <ModalBox open={openModal} setOpen={setOpenModal} /> */}
+          <ModalBox open={openModal} setOpen={setOpenModal} type="user-registration"/>
         </div>
       </RainbowKitProvider>
     </WagmiConfig>
