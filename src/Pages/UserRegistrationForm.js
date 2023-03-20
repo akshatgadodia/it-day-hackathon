@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { contract } from '../Contract/ether';
 import Swal from 'sweetalert2'
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Copyright(props) {
   return (
@@ -43,7 +44,7 @@ export default function UserRegistrationForm(props) {
     // console.log(contract);
     try{
     const outputData = await contract.registerUser(data.get('name'), data.get('age'), data.get('city'),
-                        data.get('aadhar'), data.get('pan'), data.get('documentName'), data.get('email'));
+                        data.get('aadhar'), data.get('pan'), data.get('aadhar'), data.get('email'));
       Swal.fire({
         icon: 'success',
         title: 'Registered Successfully',
@@ -115,7 +116,7 @@ export default function UserRegistrationForm(props) {
                   size="small"
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -126,7 +127,7 @@ export default function UserRegistrationForm(props) {
                   size="small"
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -145,18 +146,6 @@ export default function UserRegistrationForm(props) {
                   label="City"
                   name="city"
                   autoComplete="pan"
-                  size="small"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="documentName"
-                  label="Document Name"
-                  type="text"
-                  id="documentName"
-                  autoComplete="documentName"
                   size="small"
                 />
               </Grid>

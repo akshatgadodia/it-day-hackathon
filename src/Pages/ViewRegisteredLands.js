@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 import { NavLink } from "react-router-dom";
 import { contract } from '../Contract/ether';
 import { useAccount } from 'wagmi'
-
+import CircularProgress from '@mui/material/CircularProgress';
 const ViewRegisteredLands = () => {
     const { address, isConnected } = useAccount()
     const [tableData, setTableData] = useState(null);
@@ -60,6 +60,7 @@ const ViewRegisteredLands = () => {
                 </Container>
             </AppBar>
             <div>
+                {tableData===null && <div style={{height:'500px', width:'500px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}><CircularProgress /></div>}
                 {tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>

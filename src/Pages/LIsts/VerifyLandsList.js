@@ -10,6 +10,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import { contract } from '../../Contract/ether';
 import Swal from 'sweetalert2'
+import CircularProgress from '@mui/material/CircularProgress';
+
 export default function ViewAllLandInspector() {
     const [tableData, setTableData] = useState(null);
     const [rows, setRows] = useState([]);
@@ -38,57 +40,61 @@ export default function ViewAllLandInspector() {
     }, [])
 
     return (
-        tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                    <TableCell>Land Area</TableCell>
-                                <TableCell align="right">Land Address</TableCell>
-                                <TableCell align="right">Land Price</TableCell>
-                                <TableCell align="right">Latitude & Longitude</TableCell>
-                                <TableCell align="right">Property PID</TableCell>
-                                <TableCell align="right">Survey No</TableCell>
-                                <TableCell align="right">Action</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((row) => (
-                        <TableRow
-                            key={row.name}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                                    <TableCell component="th" scope="row">
-                                    {row.area}
-                                    </TableCell>
-                                    <TableCell align="right">{row.landAddress}</TableCell>
-                                    <TableCell align="right">{row.price}</TableCell>
-                                    <TableCell align="right">{row.latlon}</TableCell>
-                                    <TableCell align="right">{row.pid}</TableCell>
-                                    <TableCell align="right">{row.surveyNo}</TableCell>
-                            <TableCell align="right">
-                                <IconButton aria-label="verify land" color="primary" onClick={async () => {
-                                    try {
-                                        await contract.verifyLand(row.id);
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Land Verified Successfully',
-                                            text: `Land with id ${row.id} verified successfully`,
-                                        });
-                                    } catch (err) {
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: err.message,
-                                        })
-                                    }
-                                }}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            </TableCell>
+        <>
+            {tableData === null && <div style={{ height: '500px', width: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress /></div>}
+            {tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Land Area</TableCell>
+                            <TableCell align="right">Land Address</TableCell>
+                            <TableCell align="right">Land Price</TableCell>
+                            <TableCell align="right">Latitude & Longitude</TableCell>
+                            <TableCell align="right">Property PID</TableCell>
+                            <TableCell align="right">Survey No</TableCell>
+                            <TableCell align="right">Action</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                            <TableRow
+                                key={row.name}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    {row.area}
+                                </TableCell>
+                                <TableCell align="right">{row.landAddress}</TableCell>
+                                <TableCell align="right">{row.price}</TableCell>
+                                <TableCell align="right">{row.latlon}</TableCell>
+                                <TableCell align="right">{row.pid}</TableCell>
+                                <TableCell align="right">{row.surveyNo}</TableCell>
+                                <TableCell align="right">
+                                    <IconButton aria-label="verify land" color="primary" onClick={async () => {
+                                        try {
+                                            await contract.verifyLand(row.id);
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Land Verified Successfully',
+                                                text: `Land with id ${row.id} verified successfully`,
+                                            });
+                                        } catch (err) {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: err.message,
+                                            })
+                                        }
+                                    }}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>}
+        </>
+
     );
 }

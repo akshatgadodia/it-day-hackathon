@@ -10,6 +10,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import { contract } from '../Contract/ether';
 import Swal from 'sweetalert2'
+import CircularProgress from '@mui/material/CircularProgress';
+
 export default function ViewAllLandInspector() {
     const [tableData, setTableData] = useState(null);
     const [rows, setRows] = useState([]);
@@ -36,7 +38,9 @@ export default function ViewAllLandInspector() {
     }, [])
 
     return (
-        tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
+        <>
+            {tableData === null && <div style={{ height: '500px', width: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress /></div>}
+            { tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -85,6 +89,8 @@ export default function ViewAllLandInspector() {
                     ))}
                 </TableBody>
             </Table>
-        </TableContainer>
+        </TableContainer>}
+        </>
+       
     );
 }
