@@ -18,6 +18,7 @@ import connectEther from './Contract/ether';
 import ModalBox from "./Components/ModalBox";
 import AdminDashboard from "./Pages/AdminDashboard";
 // import { contract } from './Contract/ether';
+import ViewRegisteredLands from "./Pages/ViewRegisteredLands";
 
 const { chains, provider } = configureChains(
   // [mainnet, polygon, optimism, arbitrum, goerli],
@@ -65,6 +66,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/registered-lands" element={<ViewRegisteredLands />} />
           </Routes>
           {/* <ModalBox open={openModal} setOpen={setOpenModal} /> */}
           <ModalBox open={openModal} setOpen={setOpenModal} type="user-registration"/>
