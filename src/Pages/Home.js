@@ -117,7 +117,7 @@ function Home(props) {
                                                         if (!connected) {
                                                             return (
                                                                 <Button onClick={openConnectModal} variant="contained" color="primary">
-                                                                    Register To BUY/SELL
+                                                                    Login to Register Land
                                                                 </Button>
                                                             );
                                                         }
