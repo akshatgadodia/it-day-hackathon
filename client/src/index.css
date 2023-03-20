@@ -1,0 +1,30 @@
+.main-logo{
+  max-width: 150px;
+}
+.connectWalletBtn {
+  background-color: #fff!important;
+  border-radius: 6px!important;
+  color: #003fba!important;
+  padding: 10px 18px!important;
+  font-weight: 800;
+  text-transform: uppercase;
+  /* float: right; */
+  /* text-align: right; */
+}
+.topNav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+.connectWalletBtn img{
+  max-width: 25px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+.bgVideoDiv iframe {
+  position: absolute;
+  min-width: 100%;
+  min-height: calc(100% - 77px);
+}
