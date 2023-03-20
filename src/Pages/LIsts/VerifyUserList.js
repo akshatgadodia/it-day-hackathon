@@ -48,12 +48,12 @@ export default function ViewAllLandInspector() {
                             <TableRow>
                                 <TableCell>Address</TableCell>
                                 <TableCell>Name</TableCell>
-                                <TableCell align="right">Age</TableCell>
-                                <TableCell align="right">City</TableCell>
-                                <TableCell align="right">Aadhar No.</TableCell>
-                                <TableCell align="right">Pan No.</TableCell>
-                                <TableCell align="right">Email</TableCell>
-                                <TableCell align="right">Verify</TableCell>
+                                <TableCell>Age</TableCell>
+                                <TableCell>City</TableCell>
+                                <TableCell>Aadhar No.</TableCell>
+                                <TableCell>Pan No.</TableCell>
+                                <TableCell>Email</TableCell>
+                                <TableCell>Verify</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -65,15 +65,15 @@ export default function ViewAllLandInspector() {
                                     <TableCell component="th" scope="row">
                                         {row.address}
                                     </TableCell>
-                                    <TableCell align="right">
+                                    <TableCell>
                                         {row.name}
                                     </TableCell>
-                                    <TableCell align="right">{row.age}</TableCell>
-                                    <TableCell align="right">{row.city}</TableCell>
-                                    <TableCell align="right">{row.aadhar}</TableCell>
-                                    <TableCell align="right">{row.pan}</TableCell>
-                                    <TableCell align="right">{row.email}</TableCell>
-                                    <TableCell align="right">
+                                    <TableCell>{row.age}</TableCell>
+                                    <TableCell>{row.city}</TableCell>
+                                    <TableCell>{row.aadhar}</TableCell>
+                                    <TableCell>{row.pan}</TableCell>
+                                    <TableCell>{row.email}</TableCell>
+                                    <TableCell>
                                         <IconButton aria-label="verify" color="primary" onClick={async () => {
                                             try {
                                                 await contract.verifyUser(row.address);

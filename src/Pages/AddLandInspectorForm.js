@@ -77,6 +77,7 @@ const AddLandInspectorForm = () => {
                                         name="name"
                                         autoComplete="name"
                                         size="small"
+                                        type="text"
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={12}>
@@ -89,6 +90,7 @@ const AddLandInspectorForm = () => {
                                         label="Address"
                                         autoFocus
                                         size="small"
+                                        type="text"
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={12}>
@@ -98,6 +100,7 @@ const AddLandInspectorForm = () => {
                                         id="age"
                                         label="Age"
                                         name="age"
+                                        type="number"
                                         autoComplete="family-name"
                                         size="small"
                                     />
@@ -111,6 +114,7 @@ const AddLandInspectorForm = () => {
                                         name="designation"
                                         autoComplete="designation"
                                         size="small"
+                                        type="text"
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -122,6 +126,7 @@ const AddLandInspectorForm = () => {
                                         name="city"
                                         autoComplete="city"
                                         size="small"
+                                        type="text"
                                     />
                                 </Grid>
                             </Grid>

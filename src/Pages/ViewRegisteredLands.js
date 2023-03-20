@@ -25,7 +25,6 @@ const ViewRegisteredLands = () => {
             for (let i = 0; i < data.length; i++) {
                 const landData = await contract.Lands(data[i]);
                 const tableRow = { area: landData[1].toNumber(), landAddress: landData[2], price: landData[3].toNumber(), latlon: landData[4], pid: landData[5].toNumber(), surveyNo: landData[6], verified: landData[10].toString() };
-                // setRows(current => [...current, tableRow]);
                 setRows(prevArray => {
                     if(prevArray.some(obj => obj.pid === tableRow.pid)){
                         return prevArray;
@@ -66,12 +65,12 @@ const ViewRegisteredLands = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Land Area</TableCell>
-                                <TableCell align="right">Land Address</TableCell>
-                                <TableCell align="right">Land Price</TableCell>
-                                <TableCell align="right">Latitude & Longitude</TableCell>
-                                <TableCell align="right">Property PID</TableCell>
-                                <TableCell align="right">Survey No</TableCell>
-                                <TableCell align="right">Verified Status</TableCell>
+                                <TableCell>Land Address</TableCell>
+                                <TableCell>Land Price</TableCell>
+                                <TableCell>Latitude & Longitude</TableCell>
+                                <TableCell>Property PID</TableCell>
+                                <TableCell>Survey No</TableCell>
+                                <TableCell>Verified Status</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -83,12 +82,12 @@ const ViewRegisteredLands = () => {
                                     <TableCell component="th" scope="row">
                                     {row.area}
                                     </TableCell>
-                                    <TableCell align="right">{row.landAddress}</TableCell>
-                                    <TableCell align="right">{row.price}</TableCell>
-                                    <TableCell align="right">{row.latlon}</TableCell>
-                                    <TableCell align="right">{row.pid}</TableCell>
-                                    <TableCell align="right">{row.surveyNo}</TableCell>
-                                    <TableCell align="right">{row.verified}</TableCell>
+                                    <TableCell>{row.landAddress}</TableCell>
+                                    <TableCell>{row.price}</TableCell>
+                                    <TableCell>{row.latlon}</TableCell>
+                                    <TableCell>{row.pid}</TableCell>
+                                    <TableCell>{row.surveyNo}</TableCell>
+                                    <TableCell>{row.verified}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

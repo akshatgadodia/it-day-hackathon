@@ -80,6 +80,7 @@ export default function UserRegistrationForm(props) {
                   label="Area"
                   autoFocus
                   size="small"
+                  type="number"
                 />
               </Grid>
               
@@ -92,6 +93,7 @@ export default function UserRegistrationForm(props) {
                   name="landprice"
                   autoComplete="landprice"
                   size="small"
+                  type="number"
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
@@ -103,6 +105,7 @@ export default function UserRegistrationForm(props) {
                   name="address"
                   autoComplete="address"
                   size="small"
+                  type="text"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -114,6 +117,7 @@ export default function UserRegistrationForm(props) {
                   name="longilatti"
                   autoComplete="longilatti"
                   size="small"
+                  type="text"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -125,6 +129,7 @@ export default function UserRegistrationForm(props) {
                   name="surveyNo"
                   autoComplete="surveyNo"
                   size="small"
+                  type="text"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -136,6 +141,7 @@ export default function UserRegistrationForm(props) {
                   name="propertyPID"
                   autoComplete="propertyPID"
                   size="small"
+                  type="number"
                 />
               </Grid>
             </Grid>

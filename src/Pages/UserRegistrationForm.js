@@ -92,6 +92,7 @@ export default function UserRegistrationForm(props) {
                   label="Name"
                   autoFocus
                   size="small"
+                  type="text"
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -103,6 +104,7 @@ export default function UserRegistrationForm(props) {
                   name="age"
                   autoComplete="family-name"
                   size="small"
+                  type="number"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -114,6 +116,7 @@ export default function UserRegistrationForm(props) {
                   name="email"
                   autoComplete="email"
                   size="small"
+                  type="email"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -125,6 +128,7 @@ export default function UserRegistrationForm(props) {
                   name="aadhar"
                   autoComplete="aadhar"
                   size="small"
+                  type="number"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -136,6 +140,7 @@ export default function UserRegistrationForm(props) {
                   name="pan"
                   autoComplete="pan"
                   size="small"
+                  type="text"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -147,6 +152,7 @@ export default function UserRegistrationForm(props) {
                   name="city"
                   autoComplete="pan"
                   size="small"
+                  type="text"
                 />
               </Grid>
             </Grid>

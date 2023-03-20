@@ -23,7 +23,6 @@ export default function ViewAllLandInspector() {
                 const landData = await contract.Lands(data[i].toNumber());
                 const tableRow = { id: landData[0].toNumber(), area: landData[1].toNumber(), landAddress: landData[2], price: landData[3].toNumber(), latlon: landData[4], pid: landData[5].toNumber(), surveyNo: landData[6], verified: landData[10] };
                 if (!tableRow.verified) {
-                    // setRows(current => [...current, tableRow]);
                     setRows(prevArray => {
                         if (prevArray.some(obj => obj.id === tableRow.id)) {
                             return prevArray;
@@ -47,12 +46,12 @@ export default function ViewAllLandInspector() {
                     <TableHead>
                         <TableRow>
                             <TableCell>Land Area</TableCell>
-                            <TableCell align="right">Land Address</TableCell>
-                            <TableCell align="right">Land Price</TableCell>
-                            <TableCell align="right">Latitude & Longitude</TableCell>
-                            <TableCell align="right">Property PID</TableCell>
-                            <TableCell align="right">Survey No</TableCell>
-                            <TableCell align="right">Action</TableCell>
+                            <TableCell>Land Address</TableCell>
+                            <TableCell>Land Price</TableCell>
+                            <TableCell>Latitude & Longitude</TableCell>
+                            <TableCell>Property PID</TableCell>
+                            <TableCell>Survey No</TableCell>
+                            <TableCell>Action</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -64,12 +63,12 @@ export default function ViewAllLandInspector() {
                                 <TableCell component="th" scope="row">
                                     {row.area}
                                 </TableCell>
-                                <TableCell align="right">{row.landAddress}</TableCell>
-                                <TableCell align="right">{row.price}</TableCell>
-                                <TableCell align="right">{row.latlon}</TableCell>
-                                <TableCell align="right">{row.pid}</TableCell>
-                                <TableCell align="right">{row.surveyNo}</TableCell>
-                                <TableCell align="right">
+                                <TableCell>{row.landAddress}</TableCell>
+                                <TableCell>{row.price}</TableCell>
+                                <TableCell>{row.latlon}</TableCell>
+                                <TableCell>{row.pid}</TableCell>
+                                <TableCell>{row.surveyNo}</TableCell>
+                                <TableCell>
                                     <IconButton aria-label="verify land" color="primary" onClick={async () => {
                                         try {
                                             await contract.verifyLand(row.id);

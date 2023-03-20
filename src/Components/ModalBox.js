@@ -35,7 +35,6 @@ export default function ModalBox(props) {
         <Box sx={style}>
           {(props.type==="user-registration") && <UserRegistrationForm handleClose={handleClose}/>}
           {(props.type==="land-add") && <AddLandForm handleClose={()=>{props.setOpen(false);}}/>}
-
         </Box>
       </Modal>
     </div>

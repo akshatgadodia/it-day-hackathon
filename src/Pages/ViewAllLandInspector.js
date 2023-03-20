@@ -45,11 +45,11 @@ export default function ViewAllLandInspector() {
                 <TableHead>
                     <TableRow>
                         <TableCell>Name</TableCell>
-                        <TableCell align="right">Age</TableCell>
-                        <TableCell align="right">Address</TableCell>
-                        <TableCell align="right">Designation</TableCell>
-                        <TableCell align="right">City</TableCell>
-                        <TableCell align="right">Action</TableCell>
+                        <TableCell>Age</TableCell>
+                        <TableCell>Address</TableCell>
+                        <TableCell>Designation</TableCell>
+                        <TableCell>City</TableCell>
+                        <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -61,11 +61,11 @@ export default function ViewAllLandInspector() {
                             <TableCell component="th" scope="row">
                                 {row.name}
                             </TableCell>
-                            <TableCell align="right">{row.age}</TableCell>
-                            <TableCell align="right">{row.address}</TableCell>
-                            <TableCell align="right">{row.designation}</TableCell>
-                            <TableCell align="right">{row.city}</TableCell>
-                            <TableCell align="right">
+                            <TableCell>{row.age}</TableCell>
+                            <TableCell>{row.address}</TableCell>
+                            <TableCell>{row.designation}</TableCell>
+                            <TableCell>{row.city}</TableCell>
+                            <TableCell>
                                 <IconButton aria-label="delete" color="primary" onClick={async () => {
                                     try {
                                         await contract.removeLandInspector(row.address);
