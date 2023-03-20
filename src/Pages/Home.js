@@ -72,7 +72,7 @@ function Home(props) {
             <AppBar position="static" className={classes.appBar}>
                 <Container>
                     <Toolbar class="topNav">
-                        <img src="/img/cover.png" className='main-logo' alt="logo" />
+                        <img src="/cover.png" className='main-logo' alt="logo" />
                         <ConnectButton chainStatus="icon" accountStatus="avatar" />
                     </Toolbar>
                 </Container>
