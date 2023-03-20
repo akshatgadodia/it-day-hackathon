@@ -40,7 +40,7 @@ export default function ViewAllLandInspector() {
 
     return (
         <>
-            {tableData === null && <div style={{ height: '500px', width: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress /></div>}
+            {tableData === null && <div style={{ height: '500px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress /></div>}
             {
                 tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
