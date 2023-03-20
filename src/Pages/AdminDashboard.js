@@ -10,7 +10,6 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AddLandInspectorForm from './AddLandInspectorForm';
 import ViewAllLandInspector from './ViewAllLandInspector';
@@ -19,7 +18,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import GroupIcon from '@mui/icons-material/Group';
 
@@ -116,7 +114,7 @@ class AdminDashboard extends React.Component {
         this.setState({ open: false });
     };
     toggleTab = (e)=>{
-        if(e.currentTarget.dataset.val == 1){
+        if(e.currentTarget.dataset.val === 1){
             this.setState({ tab: 1 });
         }else{
             this.setState({ tab: 2 });

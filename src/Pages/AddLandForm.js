@@ -3,7 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import HouseIcon from '@mui/icons-material/House';
@@ -17,9 +16,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+        Block Estate
+      {' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -34,7 +32,7 @@ export default function UserRegistrationForm(props) {
     const data = new FormData(event.currentTarget);
     try{
     const outputData = await contract.addLand(data.get('area'), data.get('address'), data.get('landprice'), 
-                        data.get('longilatti'), data.get('propertyPID'), data.get('surveyNo'), data.get('name'));
+                        data.get('longilatti'), data.get('propertyPID'), data.get('surveyNo'), data.get('propertyPID'));
       Swal.fire({
         icon: 'success',
         title: 'Registered Successfully',
@@ -107,7 +105,7 @@ export default function UserRegistrationForm(props) {
                   size="small"
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -118,7 +116,7 @@ export default function UserRegistrationForm(props) {
                   size="small"
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -137,19 +135,6 @@ export default function UserRegistrationForm(props) {
                   label="Property PID"
                   name="propertyPID"
                   autoComplete="propertyPID"
-                  size="small"
-                />
-              </Grid>
-              
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="name"
-                  label="Document Name"
-                  type="text"
-                  id="name"
-                  autoComplete="name"
                   size="small"
                 />
               </Grid>

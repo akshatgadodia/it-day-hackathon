@@ -9,13 +9,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import DeleteIcon from '@mui/icons-material/Delete';
-import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
-import IconButton from '@mui/material/IconButton';
 import Button from '@material-ui/core/Button';
 import { NavLink } from "react-router-dom";
 import { contract } from '../Contract/ether';
-import Swal from 'sweetalert2'
 import { useAccount } from 'wagmi'
 
 const ViewRegisteredLands = () => {
@@ -25,11 +21,19 @@ const ViewRegisteredLands = () => {
 
     useEffect(() => {
         const callData = async () => {
-            const data = await contract.ReturnAllLandIncpectorList(address);
+            const data = await contract.myAllLands(address);
             for (let i = 0; i < data.length; i++) {
-                const inspectorData = await contract.InspectorMapping(data[i]);
-                const tableRow = { name: inspectorData[2], address: inspectorData[1], designation: inspectorData[4], city: inspectorData[5] };
-                setRows(current => [...current, tableRow]);
+                const landData = await contract.Lands(data[i]);
+                const tableRow = { area: landData[1].toNumber(), landAddress: landData[2], price: landData[3].toNumber(), latlon: landData[4], pid: landData[5].toNumber(), surveyNo: landData[6], verified: landData[10].toString() };
+                // setRows(current => [...current, tableRow]);
+                setRows(prevArray => {
+                    if(prevArray.some(obj => obj.pid === tableRow.pid)){
+                        return prevArray;
+                    }
+                    else{
+                        return [...prevArray, tableRow];
+                    }
+                })
             }
             setTableData(true);
         }
@@ -37,7 +41,7 @@ const ViewRegisteredLands = () => {
     }, [isConnected])
 
     return (
-        <div>
+        <div style={{margin:'0', padding: '0'}}>
             <AppBar position="static" style={{ background: "#003fba" }}>
                 <Container>
                     <Toolbar class="topNav">
@@ -56,15 +60,17 @@ const ViewRegisteredLands = () => {
                 </Container>
             </AppBar>
             <div>
-                tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
+                {tableData && <TableContainer component={Paper} style={{ margin: "60px 0" }}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell align="right">Address</TableCell>
-                                <TableCell align="right">Designation</TableCell>
-                                <TableCell align="right">City</TableCell>
-                                <TableCell align="right">Action</TableCell>
+                                <TableCell>Land Area</TableCell>
+                                <TableCell align="right">Land Address</TableCell>
+                                <TableCell align="right">Land Price</TableCell>
+                                <TableCell align="right">Latitude & Longitude</TableCell>
+                                <TableCell align="right">Property PID</TableCell>
+                                <TableCell align="right">Survey No</TableCell>
+                                <TableCell align="right">Verified Status</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -74,36 +80,19 @@ const ViewRegisteredLands = () => {
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell component="th" scope="row">
-                                        {row.name}
+                                    {row.area}
                                     </TableCell>
-                                    <TableCell align="right">{row.address}</TableCell>
-                                    <TableCell align="right">{row.designation}</TableCell>
-                                    <TableCell align="right">{row.city}</TableCell>
-                                    <TableCell align="right">
-                                        <IconButton aria-label="delete" color="primary" onClick={async () => {
-                                            try {
-                                                await contract.removeLandInspector(row.address);
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'Land Inspector Removed Successfully',
-                                                    text: `Land Inspector with address ${row.address} removed successfully`,
-                                                });
-                                            } catch (err) {
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'Oops...',
-                                                    text: err.message,
-                                                })
-                                            }
-                                        }}>
-                                            <DeleteIcon />
-                                        </IconButton>
-                                    </TableCell>
+                                    <TableCell align="right">{row.landAddress}</TableCell>
+                                    <TableCell align="right">{row.price}</TableCell>
+                                    <TableCell align="right">{row.latlon}</TableCell>
+                                    <TableCell align="right">{row.pid}</TableCell>
+                                    <TableCell align="right">{row.surveyNo}</TableCell>
+                                    <TableCell align="right">{row.verified}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
-                </TableContainer>
+                </TableContainer>}
             </div>
         </div>
     )

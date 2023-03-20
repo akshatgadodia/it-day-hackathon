@@ -10,6 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import ModalBox from '../Components/ModalBox';
+import {NavLink} from "react-router-dom";
 
 const styles = theme => ({
     appBar: {
@@ -135,9 +136,11 @@ function Home(props) {
                                                                 <Button variant="contained" color="primary" onClick={() => { setOpenAddFormModal(true) }}>
                                                                     ADD Land
                                                                 </Button>
-                                                                <Button variant="contained" color="primary" onClick={() => { setOpenAddFormModal(true) }}>
+                                                                <NavLink to="/registered-lands">
+                                                                <Button variant="contained" color="primary">
                                                                     View Registered Land
                                                                 </Button>
+                                                                </NavLink>
                                                             </div>
                                                         );
                                                     })()}

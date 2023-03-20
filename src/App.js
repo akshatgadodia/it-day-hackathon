@@ -9,7 +9,6 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-// import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
 import { goerli, polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -17,11 +16,10 @@ import { useAccount } from 'wagmi'
 import connectEther from './Contract/ether';
 import ModalBox from "./Components/ModalBox";
 import AdminDashboard from "./Pages/AdminDashboard";
-// import { contract } from './Contract/ether';
 import ViewRegisteredLands from "./Pages/ViewRegisteredLands";
+import LandInpectorDashboard from "./Pages/LandInpectorDashboard";
 
 const { chains, provider } = configureChains(
-  // [mainnet, polygon, optimism, arbitrum, goerli],
   [polygonMumbai, goerli],
   [
     alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
@@ -65,8 +63,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
             <Route path="/registered-lands" element={<ViewRegisteredLands />} />
+            <Route path="/land-inspector-dashboard" element={<LandInpectorDashboard />} />
           </Routes>
           {/* <ModalBox open={openModal} setOpen={setOpenModal} /> */}
           <ModalBox open={openModal} setOpen={setOpenModal} type="user-registration"/>

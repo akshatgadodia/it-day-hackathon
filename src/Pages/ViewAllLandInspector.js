@@ -10,7 +10,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import { contract } from '../Contract/ether';
 import Swal from 'sweetalert2'
-
 export default function ViewAllLandInspector() {
     const [tableData, setTableData] = useState(null);
     const [rows, setRows] = useState([]);
@@ -20,8 +19,16 @@ export default function ViewAllLandInspector() {
             const data = await contract.ReturnAllLandIncpectorList();
             for (let i = 0; i < data.length; i++) {
                 const inspectorData = await contract.InspectorMapping(data[i]);
-                const tableRow = { name: inspectorData[2], address: inspectorData[1], designation: inspectorData[4], city: inspectorData[5] };
-                setRows(current => [...current, tableRow]);
+                const tableRow = { name: inspectorData[2], address: inspectorData[1], age: inspectorData[3].toNumber(), designation: inspectorData[4], city: inspectorData[5] };
+                // setRows(current => [...current, tableRow]);
+                setRows(prevArray => {
+                    if(prevArray.some(obj => obj.address === tableRow.address)){
+                        return prevArray;
+                    }
+                    else{
+                        return [...prevArray, tableRow];
+                    }
+                })
             }
             setTableData(true);
         }
@@ -34,6 +41,7 @@ export default function ViewAllLandInspector() {
                 <TableHead>
                     <TableRow>
                         <TableCell>Name</TableCell>
+                        <TableCell align="right">Age</TableCell>
                         <TableCell align="right">Address</TableCell>
                         <TableCell align="right">Designation</TableCell>
                         <TableCell align="right">City</TableCell>
@@ -49,6 +57,7 @@ export default function ViewAllLandInspector() {
                             <TableCell component="th" scope="row">
                                 {row.name}
                             </TableCell>
+                            <TableCell align="right">{row.age}</TableCell>
                             <TableCell align="right">{row.address}</TableCell>
                             <TableCell align="right">{row.designation}</TableCell>
                             <TableCell align="right">{row.city}</TableCell>

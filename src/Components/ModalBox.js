@@ -28,13 +28,13 @@ export default function ModalBox(props) {
     <div>
       <Modal
         open={props.open}
-        onClose={handleClose}
+        onClose={props.type==="user-registration" ? handleClose : ()=>{props.setOpen(false);}}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           {(props.type==="user-registration") && <UserRegistrationForm handleClose={handleClose}/>}
-          {(props.type==="land-add") && <AddLandForm handleClose={handleClose}/>}
+          {(props.type==="land-add") && <AddLandForm handleClose={()=>{props.setOpen(false);}}/>}
 
         </Box>
       </Modal>

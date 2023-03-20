@@ -14,41 +14,41 @@ import Swal from 'sweetalert2'
 
 function Copyright(props) {
     return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
-        {'Copyright © '}
-          Block Estate
-        {' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
+        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+            {'Copyright © '}
+            Block Estate
+            {' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
     );
-  }
-  
-  const theme = createTheme();
+}
+
+const theme = createTheme();
 
 const AddLandInspectorForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        try{
-        const outputData = await contract.addLandInspector(data.get('address'), data.get('name'), data.get('age'), 
-                            data.get('designation'), data.get('city'));
-          Swal.fire({
-            icon: 'success',
-            title: 'Registered Successfully',
-            text: `Tx Hash is ${outputData.hash}`,
-          });
+        try {
+            const outputData = await contract.addLandInspector(data.get('address'), data.get('name'), data.get('age'),
+                data.get('designation'), data.get('city'));
+            Swal.fire({
+                icon: 'success',
+                title: 'Registered Successfully',
+                text: `Tx Hash is ${outputData.hash}`,
+            });
         }
-        catch(err){
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: err.message,
-          })
+        catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: err.message,
+            })
         }
-      };
+    };
     return (
-        <div style={{padding:"40px 0"}}>
+        <div style={{ padding: "40px 0" }}>
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
