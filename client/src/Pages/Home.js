@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { ButtonBase, Container } from '@material-ui/core';
 import BgVideoSection from '../Components/BgVideoSection';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const styles = theme => ({
     appBar: {
@@ -79,10 +80,12 @@ function Home(props) {
                 <Container>
                     <Toolbar class="topNav">
                         <img src="/img/cover.png" className='main-logo'></img>
-                        <ButtonBase className='connectWalletBtn'>
+                        {/* <ButtonBase className='connectWalletBtn'>
                             <img src="/img/rainbow.svg"/>
                             Connect Wallet
-                        </ButtonBase>
+                        </ButtonBase> */}
+                        {/* <ConnectButton className='connectWalletBtn'/> */}
+                        <ConnectButton chainStatus="icon" accountStatus="avatar"/>
                     </Toolbar>
                 </Container>
             </AppBar>
