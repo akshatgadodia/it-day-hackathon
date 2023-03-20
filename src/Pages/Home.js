@@ -130,7 +130,7 @@ function Home(props) {
                                                         }
                                                         return (
                                                             <Button variant="contained" color="primary" onClick={() => { setOpenAddFormModal(true) }}>
-                                                                BUY/SELL Land
+                                                                ADD Land
                                                             </Button>
                                                         );
                                                     })()}

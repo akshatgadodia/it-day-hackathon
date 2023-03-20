@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import HouseIcon from '@mui/icons-material/House';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -44,8 +44,8 @@ export default function UserRegistrationForm(props) {
     // console.log(formData);
     // console.log(contract);
     try{
-    const outputData = await contract.registerUser(data.get('name'), data.get('age'), data.get('city'),
-                        data.get('aadhar'), data.get('pan'), data.get('documentName'), data.get('email'));
+    const outputData = await contract.addLand(data.get('area'), data.get('address'), data.get('landprice'), 
+                        data.get('longilatti'), data.get('propertyPID'), data.get('surveyNo'), data.get('name'));
       Swal.fire({
         icon: 'success',
         title: 'Registered Successfully',
@@ -76,55 +76,45 @@ export default function UserRegistrationForm(props) {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            <HouseIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Add Land
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={8}>
+              <Grid item xs={12} sm={7}>
                 <TextField
-                  autoComplete="name"
-                  name="name"
+                  autoComplete="area"
+                  name="area"
                   required
                   fullWidth
-                  id="name"
-                  label="Name"
+                  id="area"
+                  label="Area"
                   autoFocus
                   size="small"
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
+              
+              <Grid item xs={5}>
                 <TextField
                   required
                   fullWidth
-                  id="age"
-                  label="Age"
-                  name="age"
-                  autoComplete="family-name"
+                  id="landPrice"
+                  label="Price"
+                  name="landprice"
+                  autoComplete="landprice"
                   size="small"
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={12}>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  size="small"
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="aadhar"
-                  label="Aadhar No"
-                  name="aadhar"
-                  autoComplete="aadhar"
+                  id="address"
+                  label="Address"
+                  name="address"
+                  autoComplete="address"
                   size="small"
                 />
               </Grid>
@@ -132,10 +122,21 @@ export default function UserRegistrationForm(props) {
                 <TextField
                   required
                   fullWidth
-                  id="pan"
-                  label="PAN No"
-                  name="pan"
-                  autoComplete="pan"
+                  id="longilatti"
+                  label="Longitude & Lattitude"
+                  name="longilatti"
+                  autoComplete="longilatti"
+                  size="small"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="surveyNo"
+                  label="Survey No"
+                  name="surveyNo"
+                  autoComplete="surveyNo"
                   size="small"
                 />
               </Grid>
@@ -143,22 +144,23 @@ export default function UserRegistrationForm(props) {
                 <TextField
                   required
                   fullWidth
-                  id="city"
-                  label="City"
-                  name="city"
-                  autoComplete="pan"
+                  id="propertyPID"
+                  label="Property PID"
+                  name="propertyPID"
+                  autoComplete="propertyPID"
                   size="small"
                 />
               </Grid>
+              
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  name="documentName"
+                  name="name"
                   label="Document Name"
                   type="text"
-                  id="documentName"
-                  autoComplete="documentName"
+                  id="name"
+                  autoComplete="name"
                   size="small"
                 />
               </Grid>
@@ -169,7 +171,7 @@ export default function UserRegistrationForm(props) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Add Land
             </Button>
             <Grid container justifyContent="flex-end">
             </Grid>
