@@ -129,9 +129,16 @@ function Home(props) {
                                                             );
                                                         }
                                                         return (
-                                                            <Button variant="contained" color="primary" onClick={() => { setOpenAddFormModal(true) }}>
-                                                                ADD Land
-                                                            </Button>
+                                                            <div style={{
+                                                                display: 'flex', gap:'20px'
+                                                            }}>
+                                                                <Button variant="contained" color="primary" onClick={() => { setOpenAddFormModal(true) }}>
+                                                                    ADD Land
+                                                                </Button>
+                                                                <Button variant="contained" color="primary" onClick={() => { setOpenAddFormModal(true) }}>
+                                                                    View Registered Land
+                                                                </Button>
+                                                            </div>
                                                         );
                                                     })()}
                                                 </div>

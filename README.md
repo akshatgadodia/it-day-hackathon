@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Block Estate DApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Block Estate is a decentralized application (DApp) built using create-react-app and the Ethereum blockchain. The DApp allows users to register their land on the blockchain to prove ownership. The smart contract is deployed on the Polygon Mumbai testnet.
 
-## Available Scripts
+## **Getting Started**
 
-In the project directory, you can run:
+To get started with the DApp, follow these steps:
 
-### `npm start`
+### **Installation**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Clone this repository using Git:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+git clone https://github.com/akshatgadodia/it-day-hackathon
+```
 
-### `npm test`
+### **Installation**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run the following script to install the required dependencies:
 
-### `npm run build`
+```
+npm install --force
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Running the DApp**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Run the following script to start the DApp:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm start
+```
 
-### `npm run eject`
+This will start a local development server at [http://localhost:3000](http://localhost:3000) where you can access the DApp.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **Connect to the Polygon Mumbai Testnet**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Make sure to connect to the correct testnet, in this case, it's the Polygon Mumbai Testnet. You can configure your web3 wallet to point to the testnet by following the instructions in your wallet.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### **Using the DApp**
+The DApp allows you to register a new land, view the registered lands. The steps to use the DApp are:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Connect to the Polygon Mumbai Testnet using web3 wallet.
+2. Click on the `Add New Land` button to register a new land.
+3. Enter the details of your land and click on the `Add Land` button to register your land.
+4. Your land details will be added to the blockchain.
+5. You can view the details of all registered lands by clicking on the `View Registered Lands` button.
+6. On the `View Registered Lands` page, you can see details such as the land ID, owner, location, and other relevant details.
 
-## Learn More
+## **Contributing**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Contributions are always welcome, and any improvements or feature suggestions are greatly appreciated.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **License**
 
-### Code Splitting
+This project is licensed under the MIT License. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## **Acknowledgments**
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This DApp was created using `create-react-app` and `Remix IDE`, as well as various other libraries and tools. Special thanks to those developers for creating these tools and libraries. 

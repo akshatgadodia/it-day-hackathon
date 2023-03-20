@@ -68,3 +68,20 @@ export const secondaryListItems = (
     </ListItem>
   </div>
 );
+export const AdminListItem = (
+  <div>
+    <ListSubheader inset>Admin Pannel</ListSubheader>
+    <ListItem button>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Add Land Inspector" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="All Land Inspector" />
+    </ListItem>
+  </div>
+);

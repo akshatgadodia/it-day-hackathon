@@ -32,17 +32,6 @@ export default function UserRegistrationForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // const formData = {
-    //   name: data.get('name'),
-    //   email: data.get('email'),
-    //   age: data.get('age'),
-    //   aadhar: data.get('aadhar'),
-    //   pan: data.get('pan'),
-    //   city: data.get('city'),
-    //   document: data.get('documentName')
-    // };
-    // console.log(formData);
-    // console.log(contract);
     try{
     const outputData = await contract.addLand(data.get('area'), data.get('address'), data.get('landprice'), 
                         data.get('longilatti'), data.get('propertyPID'), data.get('surveyNo'), data.get('name'));

@@ -16,6 +16,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import { useAccount } from 'wagmi'
 import connectEther from './Contract/ether';
 import ModalBox from "./Components/ModalBox";
+import AdminDashboard from "./Pages/AdminDashboard";
 // import { contract } from './Contract/ether';
 
 const { chains, provider } = configureChains(
@@ -63,6 +64,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
           {/* <ModalBox open={openModal} setOpen={setOpenModal} /> */}
           <ModalBox open={openModal} setOpen={setOpenModal} type="user-registration"/>
